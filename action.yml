@@ -14,7 +14,7 @@ inputs:
     description: 'Path to configuration file.'
     default: '.luacheckrc'
     required: false
-  arguments:
+  args:
     description: 'Arguments passed to luacheck.'
     default: ''
     required: false
