@@ -22,9 +22,12 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: sudo apt-get install luarocks
+    - name: Install LuaRocks
+      run: sudo apt-get install luarocks
       shell: bash
-    - run: luarocks install --local luacheck
+    - name: Install Luacheck
+      run: luarocks install --local luacheck
       shell: bash
-    - run: /home/runner/.luarocks/bin/luacheck --config ${{ inputs.config }} ${{ inputs.arguments }} ${{ inputs.files }}
+    - name: Luacheck
+      run: /home/runner/.luarocks/bin/luacheck --config ${{ inputs.config }} ${{ inputs.arguments }} ${{ inputs.files }}
       shell: bash
