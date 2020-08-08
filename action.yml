@@ -23,7 +23,7 @@ runs:
   using: 'composite'
   steps:
     - name: Install LuaRocks
-      run: sudo apt-get install luarocks
+      run: sudo apt-get install luarocks -q
       shell: bash
     - name: Install Luacheck
       run: luarocks install --local luacheck
