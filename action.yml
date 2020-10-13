@@ -1,0 +1,33 @@
+name: 'Luacheck'
+author: 'Jayrgo'
+
+branding:
+  icon: 'moon'
+  color: 'blue'
+
+inputs:
+  files:
+    description: 'List of files, directories and rockspecs to check.'
+    default: '.'
+    required: false
+  config:
+    description: 'Path to configuration file.'
+    default: '.luacheckrc'
+    required: false
+  args:
+    description: 'Arguments passed to luacheck.'
+    default: ''
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install LuaRocks
+      run: sudo apt-get install luarocks -q
+      shell: bash
+    - name: Install Luacheck
+      run: sudo luarocks install luacheck
+      shell: bash
+    - name: Luacheck
+      run: luacheck --config ${{ inputs.config }} ${{ inputs.args }} ${{ inputs.files }}
+      shell: bash
